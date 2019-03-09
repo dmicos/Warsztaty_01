@@ -7,7 +7,7 @@ public class GuessTheNumber {
     public static void main(String[] args) {
         int numUser;
         int numGuess = randomNumber(1, 100);
-        System.out.println(":) cheat  random number --> " + numGuess);
+        //System.out.println("cheat  --> " + numGuess);
         while ((numUser = getUserNumber()) != numGuess) {
             System.out.print(numUser < numGuess ? "Za mało! " : "Za duzo! ");
         }
