@@ -44,16 +44,16 @@ public class Dice {
         return new int[]{y, z};
     }
 
-    public static void printThrows(int repeat, int x, int y) {
-        int sum = y;
+    public static void printThrows(int repeat, int y, int z) {
+        int sum = z;
         StringJoiner result = new StringJoiner(" + ");
         for (int i = 0; i < repeat; i++) {
-            int num = 1 + (int) (Math.random() * x);
+            int num = 1 + (int) (Math.random() * y);
             result.add("" + num);
             sum += num;
         }
-        if (y != 0) {
-            result.add("(" + y + ")");
+        if (z != 0) {
+            result.add("(" + z + ")");
         }
 
         System.out.format("Result of the throw: %s = %s", result.toString(), sum);
