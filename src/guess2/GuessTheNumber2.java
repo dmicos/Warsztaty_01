@@ -9,7 +9,7 @@ public class GuessTheNumber2 {
         int max = 1001;
         int count = 0;
 
-        while (count <= 10) {
+        while (count <=10) {
             count++;
             int guess = getGuess(min, max);
             System.out.println("Czy ta liczba to: " + guess + "?");
@@ -25,7 +25,6 @@ public class GuessTheNumber2 {
                 System.out.println("--- Nie oszukuj! ---");
                 count--;
             }
-            System.out.println("-----------------");
         }
         if (count > 10) {
             System.out.println("Jesteś oszustem");
@@ -33,15 +32,16 @@ public class GuessTheNumber2 {
     }
 
     public static int getGuess(int min, int max) {
-        return (int) (min + (max - min) / 2);
+        return (min + (max - min) / 2);
     }
 
     public static int getAnswer() {
+
         System.out.print(
                 "[1] więcej\n" +
-                        "[2] mniej\n" +
-                        "[3] trafiłeś\n" +
-                        "Pobierz odpowiedz [1-3]: "
+                "[2] mniej\n" +
+                "[3] trafiłeś\n" +
+                "Pobierz odpowiedz [1-3]: "
         );
 
         Scanner sc = new Scanner(System.in);
