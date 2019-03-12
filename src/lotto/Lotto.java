@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Lotto {
 
-    public static final int combs = 6;
+    public static final int length = 6;
     public static final int min = 1;
     public static final int max = 49;
 
@@ -29,8 +29,8 @@ public class Lotto {
 
     public static int check(int[] lottoNumbers, int[] userNumbers) {
         int count = 0;
-        for (int i = 0; i < combs; i++) {
-            for (int j = 0; j < combs; j++) {
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
                 if (lottoNumbers[i] == userNumbers[j]) {
                     count++;
                 }
@@ -46,7 +46,11 @@ public class Lotto {
             numbers[i] = i + 1;
         }
 
-        for (int i = 0; i < combs; i++) {
+        // Random swap for the first 6 elements in the array
+        // Tested, the probability for all 49 numbers is the same,
+        // Important: only valid if the array will be sorted! Otherwise, the first element will never be "1" etc..
+
+        for (int i = 0; i < length; i++) {
             int k = (int) (Math.random() * (max - min)) + min;
             int t = numbers[i];
             numbers[i] = numbers[k];
@@ -59,9 +63,9 @@ public class Lotto {
     }
 
     public static int[] getUserNumbers() {
-        int[] arr = new int[combs];
+        int[] arr = new int[length];
         int i = 0;
-        while (i < combs) {
+        while (i < length) {
             boolean flag = true;
             System.out.print("Liczba " + (i + 1) + " --> ");
             arr[i] = getInputNumber();
