@@ -26,7 +26,6 @@ public class PopularWords {
                     }
                 }
             }
-            writer.close();
         } catch (
                 IOException e) {
             e.printStackTrace();
