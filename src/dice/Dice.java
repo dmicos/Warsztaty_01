@@ -44,10 +44,10 @@ public class Dice {
         return new int[]{y, z};
     }
 
-    public static void printThrows(int repeat, int y, int z) {
+    public static void printThrows(int x, int y, int z) {
         int sum = z;
         StringJoiner result = new StringJoiner(" + ");
-        for (int i = 0; i < repeat; i++) {
+        for (int i = 0; i < x; i++) {
             int num = 1 + (int) (Math.random() * y);
             result.add("" + num);
             sum += num;
