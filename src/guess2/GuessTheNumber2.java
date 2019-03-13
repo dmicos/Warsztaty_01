@@ -5,26 +5,24 @@ import java.util.Scanner;
 public class GuessTheNumber2 {
 
     public static void main(String[] args) {
+        boolean win = false;
         int min = 0;
         int max = 1001;
         int count = 0;
-        boolean win = false;
 
-        while (count++ < 10) {
+        while (count++ < 10 && !win) {
             int guess = getGuess(min, max);
-            System.out.println("Czy ta liczba to: " + guess + "?");
-            int answer = getAnswer();
-            if (answer == 1) {
-                min = guess;
-            } else if (answer == 2) {
-                max = guess;
-            } else if (answer == 3) {
-                System.out.println("Trafiłem w " + count + " ruchach");
-                win = true;
-                break;
-            } else {
-                System.out.println("--- Nie oszukuj! ---");
-                count--;
+            switch (getAnswer(guess)) {
+                case "1":
+                    min = guess;
+                    break;
+                case "2":
+                    max = guess;
+                    break;
+                case "3":
+                    win = true;
+                    System.out.println("\n==> Trafiłem w " + count + " ruchach");
+                    break;
             }
         }
         if (!win) {
@@ -36,22 +34,19 @@ public class GuessTheNumber2 {
         return (min + (max - min) / 2);
     }
 
-    public static int getAnswer() {
-
-        System.out.print(
-                "[1] więcej\n" +
-                "[2] mniej\n" +
-                "[3] trafiłeś\n" +
+    public static String getAnswer(int guess) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("----\nCzy ta liczba to: " + guess + "?\n" +
+                "\t[1]-Więcej\n" +
+                "\t[2]-Mniej\n" +
+                "\t[3]-Trafiłeś\n" +
                 "Pobierz odpowiedz [1-3]: "
         );
-
-        Scanner sc = new Scanner(System.in);
-        while (!sc.hasNextInt()) {
-            System.out.println("Pobierz odpowiedz [1-3]: ");
+        while (!sc.hasNext("[123]")) {
+            System.out.print("Pobierz odpowiedz [1-3]: ");
             sc.nextLine();
         }
-
-        return sc.nextInt();
+        return sc.nextLine();
     }
 
 }
