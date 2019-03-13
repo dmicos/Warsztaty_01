@@ -17,17 +17,13 @@ public class Lotto {
         System.out.println("\nWylosowane liczby: " + Arrays.toString(lottoNumbers));
         System.out.println("Twoje liczby: " + Arrays.toString(userNumbers));
 
-        int count = check(lottoNumbers, userNumbers);
-        System.out.print("\nTrafiłeś " + count + " liczb. ");
-        if (count < 3) {
-            System.out.println("Nic nie wygrałeś...");
-        } else {
-            System.out.println("Coś wygrałeś!");
-        }
+        int count = checkMatches(lottoNumbers, userNumbers);
 
+        System.out.format("\nTrafiłeś " + count + " liczb. ");
+        System.out.println(count < 3 ? "Nic nie wygrałeś..." : "Coś wygrałeś!");
     }
 
-    public static int check(int[] lottoNumbers, int[] userNumbers) {
+    public static int checkMatches(int[] lottoNumbers, int[] userNumbers) {
         int count = 0;
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
@@ -46,7 +42,7 @@ public class Lotto {
             numbers[i] = i + 1;
         }
 
-// My idea is to use swap. I think it works faster than collections.
+// My idea is to use swap for the first six elements in the array. Bonus: it works faster than collections.
 // Important:
 // that's right if the array will be sorted or if the order does not matter!
 // otherwise, the first element will never be "1" , [2] != 2 and etc..
@@ -68,8 +64,7 @@ public class Lotto {
         int i = 0;
         while (i < length) {
             boolean flag = true;
-            System.out.print("Liczba " + (i + 1) + " --> ");
-            arr[i] = getInputNumber();
+            arr[i] = getInputNumber("Liczba " + (i + 1) + ": ");
             for (int j = 0; j < i; j++) {
                 if (arr[i] == arr[j]) {
                     System.out.println("Już podałeś liczbę!");
@@ -85,17 +80,18 @@ public class Lotto {
         return arr;
     }
 
-    public static int getInputNumber() {
+    public static int getInputNumber(String msg) {
         Scanner sc = new Scanner(System.in);
         int num;
         do {
+            System.out.print(msg);
             while (!sc.hasNextInt()) {
-                System.out.print("To nie jest liczba! Wpisz liczbę: ");
+                System.out.print("To nie jest liczba!\n"+msg);
                 sc.nextLine();
             }
             num = sc.nextInt();
             if ((num < min) || (num > max)) {
-                System.out.print("Liczba poza zakresem! Wpisz liczbę: ");
+                System.out.print("Liczba poza zakresem!\n");
             } else {
                 break;
             }
