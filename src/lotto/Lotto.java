@@ -19,7 +19,7 @@ public class Lotto {
 
         int count = checkMatches(lottoNumbers, userNumbers);
 
-        System.out.format("\nTrafiłeś " + count + " liczb. ");
+        System.out.println("\nTrafiłeś " + count + " liczb. ");
         System.out.println(count < 3 ? "Nic nie wygrałeś..." : "Coś wygrałeś!");
     }
 
