@@ -26,11 +26,11 @@ public class PopularWords {
                     }
                 }
             }
+            filteredWords();
         } catch (
                 IOException e) {
             e.printStackTrace();
         }
-        filteredWords();
     }
 
     public static void filteredWords() {
@@ -42,9 +42,6 @@ public class PopularWords {
             while ((line = reader.readLine()) != null) {
                 if (!checkFilter(line)) {
                     writer.write(line);
-                    System.out.println(
-                            line
-                    );
                     writer.newLine();
                 }
             }
