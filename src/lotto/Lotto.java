@@ -46,9 +46,10 @@ public class Lotto {
             numbers[i] = i + 1;
         }
 
-        // Random swap for the first 6 elements in the array
-        // Tested, the probability for all 49 numbers is the same,
-        // Important: only valid if the array will be sorted! Otherwise, the first element will never be "1" etc..
+// My idea is to use swap. I think it works faster than collections.
+// Important:
+// that's right if the array will be sorted or if the order does not matter!
+// otherwise, the first element will never be "1" , [2] != 2 and etc..
 
         for (int i = 0; i < length; i++) {
             int k = (int) (Math.random() * (max - min)) + min;
@@ -93,7 +94,7 @@ public class Lotto {
                 sc.nextLine();
             }
             num = sc.nextInt();
-            if ((num < 1) || (num > 49)) {
+            if ((num < min) || (num > max)) {
                 System.out.print("Liczba poza zakresem! Wpisz liczbę: ");
             } else {
                 break;
