@@ -8,9 +8,9 @@ public class GuessTheNumber2 {
         int min = 0;
         int max = 1001;
         int count = 0;
+        boolean win = false;
 
-        while (count <=10) {
-            count++;
+        while (count++ < 10) {
             int guess = getGuess(min, max);
             System.out.println("Czy ta liczba to: " + guess + "?");
             int answer = getAnswer();
@@ -20,14 +20,15 @@ public class GuessTheNumber2 {
                 max = guess;
             } else if (answer == 3) {
                 System.out.println("Trafiłem w " + count + " ruchach");
+                win = true;
                 break;
             } else {
                 System.out.println("--- Nie oszukuj! ---");
                 count--;
             }
         }
-        if (count > 10) {
-            System.out.println("Jesteś oszustem");
+        if (!win) {
+            System.out.println("Jesteś oszustem!");
         }
     }
 
